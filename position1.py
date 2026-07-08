@@ -42,9 +42,15 @@ for i in range (0, len(string), 3):
    else:
       print("")
 newProtein = protein.split("*")
-#print(newProtein)
 
+#turns newProtein list into a string, deletes all amino acid strands less than 100
 finalProtein = ""
+realProteins = ""
 for i in range (len(newProtein)):
    finalProtein = newProtein[i]
-   print (finalProtein)
+   length = len(finalProtein)
+   if length >= 100:
+      realProteins += finalProtein
+   else:
+      print("")
+print (realProteins)
