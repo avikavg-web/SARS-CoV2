@@ -1,13 +1,17 @@
+#open file
 f=open("/share/SARS-class/SARS-2020.fasta")
 
+#remove newline at end of each line
 lines = f.readlines()
 for i in range(len(lines)):
    lines[i] = lines[i].rstrip('\n')
 
+#create string that contains data
 string = ""
-
 for i in range(len(lines)):
    string += lines[i]
+
+#codon to protein dictionary
 gencode = {
     'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
     'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
@@ -26,13 +30,19 @@ gencode = {
     'TAC':'Y', 'TAT':'Y', 'TAA':'*', 'TAG':'*',
     'TGC':'C', 'TGT':'C', 'TGA':'*', 'TGG':'W'}
 
+#codon protein variables
 codon = ""
 protein = ""
 
+#splits string into codons, searches dictionary to find protein match, prints proteins
 for i in range (0, len(string), 3):
-   codon = string [i: i+3]
+   codon = string [i: i+3]  
    if codon in gencode:
       protein += (gencode[codon])
+      if (gencode[codon]) == "*":
+         print (protein)
+         protein = protein.split()
    else:
       print("")
-print(protein)
+#print(protein)
+
