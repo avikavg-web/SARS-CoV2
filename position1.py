@@ -39,10 +39,7 @@ for i in range (0, len(string), 3):
    codon = string [i: i+3]  
    if codon in gencode:
       protein += (gencode[codon])
-      if (gencode[codon]) == "*":
-         print (protein)
-         protein = protein.split()
    else:
       print("")
-#print(protein)
-
+newProtein = protein.split("*")
+print(newProtein)
