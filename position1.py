@@ -42,4 +42,9 @@ for i in range (0, len(string), 3):
    else:
       print("")
 newProtein = protein.split("*")
-print(newProtein)
+#print(newProtein)
+
+finalProtein = ""
+for i in range (len(newProtein)):
+   finalProtein = newProtein[i]
+   print (finalProtein)
