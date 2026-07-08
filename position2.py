@@ -1,12 +1,17 @@
-f = open("/share/SARS-class/SARS-2020.fasta")
+#open file
+f=open("/share/SARS-class/SARS-2020.fasta")
+
+#remove newline at end of each line
 lines = f.readlines()
 for i in range(len(lines)):
    lines[i] = lines[i].rstrip('\n')
 
+#create string that contains data
 string = ""
-
 for i in range(len(lines)):
    string += lines[i]
+
+#codon to protein dictionary
 gencode = {
     'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
     'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
@@ -25,15 +30,28 @@ gencode = {
     'TAC':'Y', 'TAT':'Y', 'TAA':'*', 'TAG':'*',
     'TGC':'C', 'TGT':'C', 'TGA':'*', 'TGG':'W'}
 
+#codon protein variables
 codon = ""
 protein = ""
 
-for i in range (2, len(string), 3):
-   codon = string [i: i+3]
+#splits string into codons, searches dictionary to find protein match, prints proteins
+for i in range (1, len(string), 3):
+   codon = string [i: i+3]  
    if codon in gencode:
       protein += (gencode[codon])
    else:
       print("")
+newProtein = protein.split("*")
 
-print(protein)
+#turns newProtein list into a string, deletes all amino acid strands less than 100
+finalProtein = ""
+realProteins = ""
+for i in range (len(newProtein)):
+   finalProtein = newProtein[i]
+   length = len(finalProtein)
+   if length >= 100:
+      realProteins += finalProtein
+   else:
+      print("")
+print (realProteins)
 
