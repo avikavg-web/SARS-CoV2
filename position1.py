@@ -35,7 +35,7 @@ codon = ""
 protein = ""
 
 #splits string into codons, searches dictionary to find protein match, prints proteins
-for i in range (0, len(string), 3):
+for i in range (1, len(string), 3):
    codon = string [i: i+3]  
    if codon in gencode:
       protein += (gencode[codon])
@@ -50,7 +50,8 @@ for i in range (len(newProtein)):
    finalProtein = newProtein[i]
    length = len(finalProtein)
    if length >= 100:
-      realProteins += finalProtein
+      realProteins = finalProtein
+      print (realProteins)
    else:
-      print("")
-print (realProteins)
+      print(" ")
+
